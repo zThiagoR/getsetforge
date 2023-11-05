@@ -3,6 +3,7 @@
   "displayName": "GetSetForge",
   "description": "Generate Getters and Setters",
   "version": "1.0.0",
+  "publisher": "zThiagoR",
   "engines": {
     "vscode": "^1.84.0"
   },
