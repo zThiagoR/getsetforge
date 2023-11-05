@@ -1,4 +1,3 @@
-// accessors.ts
 import { generateIndentation, capitalize } from './utils';
 
 export function generateAccessors(
@@ -23,17 +22,15 @@ export function generateAccessors(
       `${generateIndentation(1, tabSize, useTabs)}get${methodName}()${isTypescript && type ? `: ${type}` : ''} {`,
       `${generateIndentation(2, tabSize, useTabs)}return this.${name};`,
       `${generateIndentation(1, tabSize, useTabs)}}`
-    ].join('\n');
+    ].filter(line => line !== '').join('\n');
 
     const setter = [
       setterJsDoc,
       `${generateIndentation(1, tabSize, useTabs)}set${methodName}(new${methodName}${isTypescript && type ? `: ${type}` : ''}) {`,
       `${generateIndentation(2, tabSize, useTabs)}this.${name} = new${methodName};`,
       `${generateIndentation(1, tabSize, useTabs)}}`
-    ].join('\n');
+    ].filter(line => line !== '').join('\n');;
 
     return `${getter}\n\n${setter}`;
   }).join('\n\n');
 }
-
-
